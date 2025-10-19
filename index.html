@@ -1,12 +1,108 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>XTesla — Investment Insights</title>
+    <meta name="description" content="XTesla — simple Tesla investment dashboard with price, chart and calculator (inspired design)." />
+    <link rel="icon" href="/favicon.ico" />
   </head>
   <body>
-    <div id="app"></div>
+    <header class="site-header">
+      <div class="container header-inner">
+  <img src="/assets/tesla-logo.jpg" alt="XTesla logo" class="logo" />
+        <h1 class="brand">XTesla</h1>
+        <nav class="nav">
+          <a href="#features">Features</a>
+          <a href="#calculator">Calculator</a>
+          <a href="#about">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="hero">
+        <div class="hero-left">
+          <h2>Powerful control. Trusted returns.</h2>
+          <p>Admin tools let authorized staff top up or reduce reported profits instantly — giving you fast, auditable control over financial settings and investor reporting.</p>
+          <p class="marketing">Our platform gives portfolio managers and administrators precise control over profitability settings so you can adapt to market conditions and investor requirements in real time. Authorized admins can increase or decrease profit allocations, apply adjustments to multiple accounts at once, and record every change with a full audit trail. Built-in safety features include role-based access control, session logging, and change approval workflows — so you keep flexibility without sacrificing compliance or transparency.</p>
+          <div class="cta-row">
+            <button id="buyBtn" class="btn primary">Start Investing</button>
+            <button id="learnBtn" class="btn secondary">Learn More</button>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="card price-card">
+            <div class="price-header">
+              <div>
+                <div class="ticker">TSLA</div>
+                <div id="price" class="price">--</div>
+              </div>
+              <div id="change" class="change">--</div>
+            </div>
+            <canvas id="priceChart" width="400" height="180"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <section id="calculator" class="card calculator">
+        <h3>Investment Calculator</h3>
+        <div class="calc-grid">
+          <label>Amount to invest ($)
+            <input id="amount" type="number" value="1000" />
+          </label>
+          <label>Years to hold
+            <input id="years" type="number" value="5" />
+          </label>
+          <label>Estimated annual return (%)
+            <input id="annual" type="number" value="8" />
+          </label>
+          <div>
+            <button id="calcBtn" class="btn primary">Calculate</button>
+          </div>
+        </div>
+        <div id="result" class="result">Future value: <strong>$--</strong></div>
+      </section>
+
+      <section id="features" class="features">
+        <h3>Features</h3>
+        <ul>
+          <li>Adjust profitability on demand — authorized admins can top up or reduce profit figures across portfolios.</li>
+          <li>Batch actions — perform updates for many accounts in a single, auditable operation.</li>
+          <li>Approval workflows — require multi-step approvals for high-impact changes.</li>
+          <li>Full audit logs — every change is recorded with user, time, and reason.</li>
+          <li>Granular permissions — restrict who can view vs. who can modify financial settings.</li>
+          <li>Secure access — only accessible through the protected admin portal with MFA and session controls.</li>
+        </ul>
+        <h4>Admin portal (internal)</h4>
+        <p>Welcome, Administrator. Use the controls below to adjust profit allocations across selected investments. Changes are immediately applied but will remain visible in the audit history for review. Please enter the reason for the adjustment and, if required, request approval from the Compliance team before applying high-impact changes.</p>
+        <p><strong>Important:</strong> For security, do not share login credentials. Sign in at the secure admin portal with your assigned admin account (example placeholder: admin@example.com) and enable two-factor authentication.</p>
+
+        <h4>Changelog entry template (internal)</h4>
+        <pre class="changelog">Changed by: [Admin username]
+Date/time: [YYYY-MM-DD HH:MM UTC]
+Affected accounts: [list / query]
+Action: Top up / Reduce profit by [amount or %]
+Reason: [free text]
+Approval: [Approver name or N/A]</pre>
+
+        <h4>Security & deployment recommendations</h4>
+        <ol>
+          <li>Never embed plaintext credentials in website content or client-side code.</li>
+          <li>Require strong passwords + 2FA for admin accounts.</li>
+          <li>Store secrets in environment variables or a secrets manager — do not keep them in source control.</li>
+          <li>Log all administrative actions and retain logs for audit & compliance.</li>
+          <li>Use role-based access control and limit who can change profit settings.</li>
+          <li>Consider approval workflows for changes beyond a threshold (e.g., &gt;2% or &gt;$X).</li>
+        </ol>
+      </section>
+
+      <footer id="about" class="site-footer">
+        <p>XTesla — inspired demo. Not financial advice.</p>
+      </footer>
+    </main>
+
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
